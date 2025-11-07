@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -10,10 +9,10 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/rs/zerolog"
 	"github.com/yourusername/go-sqlc-starter/internal/api"
 	"github.com/yourusername/go-sqlc-starter/internal/config"
 	"github.com/yourusername/go-sqlc-starter/internal/db"
-	"github.com/rs/zerolog"
 )
 
 func main() {
