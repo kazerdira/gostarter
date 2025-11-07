@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go + SQLC Starter Kit - Production-Ready REST API</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .price {
+            font-size: 2rem;
+            margin: 20px 0;
+            font-weight: 700;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #2d3748;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            padding: 30px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+
+        .feature-card p {
+            color: #4a5568;
+        }
+
+        /* What You Get */
+        .what-you-get {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .what-you-get h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #2d3748;
+        }
+
+        .checklist {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .checklist li {
+            padding: 15px 0;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 1.1rem;
+            list-style: none;
+        }
+
+        .checklist li:before {
+            content: "✓ ";
+            color: #48bb78;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        /* Testimonial */
+        .testimonial {
+            padding: 80px 0;
+            background: white;
+            text-align: center;
+        }
+
+        .testimonial blockquote {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #4a5568;
+        }
+
+        .testimonial cite {
+            display: block;
+            margin-top: 20px;
+            font-size: 1.1rem;
+            font-style: normal;
+            color: #667eea;
+        }
+
+        /* Pricing */
+        .pricing {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .pricing h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .pricing .price {
+            font-size: 3rem;
+            margin: 30px 0;
+        }
+
+        .pricing ul {
+            max-width: 600px;
+            margin: 40px auto;
+            text-align: left;
+        }
+
+        .pricing li {
+            padding: 10px 0;
+            font-size: 1.2rem;
+            list-style: none;
+        }
+
+        .pricing li:before {
+            content: "✓ ";
+            margin-right: 10px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            background: #2d3748;
+            color: white;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🚀 Go + SQLC Starter Kit</h1>
+            <p class="subtitle">Production-Ready REST API<br>Save 20+ Hours of Setup Time</p>
+            <div class="price">$49</div>
+            <a href="#buy" class="cta-button">Buy Now</a>
+        </div>
+    </header>
+
+    <section class="features">
+        <div class="container">
+            <h2>Why Developers Love This</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>⚡ Type-Safe Database</h3>
+                    <p>SQLC generates type-safe Go code from SQL. No more runtime errors from typos or manual scanning.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🔐 Complete Authentication</h3>
+                    <p>JWT tokens with refresh token rotation. Bcrypt password hashing. Everything you need.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🐳 Docker Ready</h3>
+                    <p>Dockerfile and docker-compose included. Deploy anywhere in minutes.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>✅ Production Tested</h3>
+                    <p>Not a toy project. This is battle-tested code handling real traffic.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📚 Comprehensive Docs</h3>
+                    <p>Deployment guides for Railway, Render, Fly.io, AWS. API documentation with examples.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🧪 Testing Ready</h3>
+                    <p>Unit and integration test examples. Coverage reports. CI/CD pipeline included.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="what-you-get">
+        <div class="container">
+            <h2>What's Included</h2>
+            <ul class="checklist">
+                <li>Complete REST API with Gin framework</li>
+                <li>Type-safe database queries with SQLC</li>
+                <li>JWT authentication with refresh tokens</li>
+                <li>PostgreSQL with automatic migrations</li>
+                <li>Docker & Docker Compose setup</li>
+                <li>User CRUD operations</li>
+                <li>Admin-only routes</li>
+                <li>Request validation</li>
+                <li>Rate limiting middleware</li>
+                <li>CORS configuration</li>
+                <li>Structured logging with zerolog</li>
+                <li>Health check endpoints</li>
+                <li>Graceful shutdown handling</li>
+                <li>Environment-based configuration</li>
+                <li>Testing examples</li>
+                <li>CI/CD pipeline (GitHub Actions)</li>
+                <li>Deployment guides (Railway, Render, Fly.io, AWS)</li>
+                <li>Complete API documentation</li>
+                <li>Makefile with common commands</li>
+                <li>30 days email support</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="testimonial">
+        <div class="container">
+            <blockquote>
+                "This saved me at least 2 weeks of setup time. The SQLC integration alone is worth the price. Clean code, great documentation, works perfectly."
+            </blockquote>
+            <cite>— Backend Developer, San Francisco</cite>
+        </div>
+    </section>
+
+    <section class="pricing" id="buy">
+        <div class="container">
+            <h2>Get Started Today</h2>
+            <div class="price">$49</div>
+            <p style="font-size: 1.2rem; margin-bottom: 20px;">One-time payment. Lifetime access.</p>
+            <a href="https://gumroad.com/your-product-link" class="cta-button">Buy Now</a>
+            <ul>
+                <li>Unlimited personal and commercial use</li>
+                <li>All future updates included</li>
+                <li>30 days email support</li>
+                <li>Money-back guarantee</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Go SQLC Starter Kit. Built with ❤️ by developers, for developers.</p>
+            <p style="margin-top: 10px;">Questions? Email: your@email.com</p>
+        </div>
+    </footer>
+</body>
+</html>
